@@ -1,33 +1,27 @@
 @echo off
-color 02
-echo "Battle.net.13434+ autodelete by [TIHB]CHERNOMOR"
+setlocal enableextensions & color 02
+echo Battle.net.13434+ autodelete by [TIHB]CHERNOMOR & echo.
 
-cd %windir% & cd/
-
-if exist "Program Files (x86)\Battle.net\" (
-set BNPATCHVER="%cd%Program Files (x86)\Battle.net\"
+cd.. & if exist "Battle.net\" (
+cd "Battle.net"
 ) else (
-echo "Battle.net folder not found on system disk"
+echo Error - I am not in a Battle.net folder
 pause
 exit
 )
-
-cd %BNPATCHVER%
 
 if not exist "Battle.net.13401" (
-set "BNPATCHVER="
-echo "You need to download Battle.net.13401 into %cd%"
+echo You need to download Battle.net.13401 into "%cd%"
 pause
 exit
 )
 
-set BNPATCHVER=13458
-
-if exist "Battle.net.%BNPATCHVER%" (
-rmdir Battle.net.%BNPATCHVER% /s /q
+for /f "delims=. tokens=3" %%i in ('dir /b /a:d') do (
+ if 13433 LSS %%i (
+ rmdir Battle.net.%%i /s /q
+ )
 )
 
-set "BNPATCHVER="
-
+endlocal
 start "" "Battle.net Launcher.exe"
 exit
