@@ -5,13 +5,14 @@ echo Battle.net.13434+ autodelete by [TIHB]CHERNOMOR & echo.
 cd.. & if exist "Battle.net\" (
 cd "Battle.net"
 ) else (
-echo Error - I am not in a Battle.net folder
+echo Error - I am not inside Battle.net folder & echo.
 pause
 exit
 )
 
 if not exist "Battle.net.13401" (
-echo You need to download Battle.net.13401 into "%cd%"
+echo Error - You need to download Battle.net.13401 to:
+echo "%cd%" & echo.
 pause
 exit
 )
